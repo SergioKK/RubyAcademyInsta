@@ -48,6 +48,8 @@ gem "bootsnap", require: false
 gem 'rubocop', require: false
 
 gem 'devise'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem "sassc-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

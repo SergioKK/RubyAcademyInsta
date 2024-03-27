@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
@@ -55,7 +56,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def user
+    @user = User.find(params[:user_id])
+    @posts = Post.where(user: @user).order(created_at: :desc)
+  end
+
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])

@@ -10,5 +10,6 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>
+<% if user_signed_in? %>
+    <%= link_to "New post", new_post_path %>
+<% end %>
