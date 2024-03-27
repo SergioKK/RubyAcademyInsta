@@ -14,4 +14,9 @@
     <%= post.user.email %>
   </p>
 
+  <p>
+    <strong>Image data:</strong>
+    <%= image_tag(post.image_url, alt: "rss feed", height: 200, width: 200) if post.image %>
+  </p>
+
 </div>
