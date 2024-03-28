@@ -17,4 +17,9 @@
 
 <% @post.comments.each do |comment| %>
   <%= comment.text %><br>
+  <% if comment.user %>
+    <% if current_user.id == comment.user.id %>
+      <%= button_to "Delete comment", comment, method: :delete %>
+    <% end %>
+  <% end %>
 <% end %>
