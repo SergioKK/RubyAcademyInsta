@@ -58,11 +58,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def user
-    @user = User.find(params[:user_id])
-    @posts = Post.where(user: @user).order(created_at: :desc)
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -72,6 +67,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :image)
+    params.require(:post).permit(:title, :content, :user_id, :image, :likes)
   end
 end
