@@ -1,23 +1,10 @@
 <%= render @post %>
 
-<%= link_to "Back to posts", posts_path %>
-
-<% if user_signed_in? %>
-  <% if current_user.id == @post.user.id %>
-    <div>
-      <%= link_to "Edit this post", edit_post_path(@post) %> |
-      <%= button_to "Destroy this post", @post, method: :delete %>
-    </div>
-  <% end %>
+<% if policy(@post).update? %>
+  <div>
+    <%= link_to "Edit this post", edit_post_path(@post) %> |
+    <%= button_to "Destroy this post", @post, method: :delete %>
+  </div>
 <% end %>
 
-<%= render "comments/form", comment: @comment%>
-
-<% @post.comments.each do |comment| %>
-  <%= comment.text %><br>
-  <% if comment.user %>
-    <% if current_user.id == comment.user.id %>
-      <%= button_to "Delete comment", comment, method: :delete %>
-    <% end %>
-  <% end %>
-<% end %>
+<%= render "comments/form", comment: @comment %>

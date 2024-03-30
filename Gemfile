@@ -50,6 +50,7 @@ gem 'rubocop', require: false
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "sassc-rails"
+gem "pundit", "~> 2.3"
 
 # photos uploader
 gem "shrine", "~> 3.0"

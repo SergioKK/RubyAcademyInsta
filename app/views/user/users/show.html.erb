@@ -1,9 +1,11 @@
-<% if current_user.id == @user.id %>
-  <h1><%= "Your posts" %></h1><br>
-<% else %>
-  <h1><%= "#{@user.email} page" %></h1><br>
+<% unless current_user or @user %>
+  <% if current_user.id == @user.id %>
+    <h1><%= "Your posts" %></h1><br>
+  <% else %>
+    <h1><%= "#{@user.email} page" %></h1><br>
+  <% end %>
 <% end %>
 
 <% @posts.each do |post| %>
-  <%= render partial: "posts/post", object: post %><br>
+  <%= render partial: "posts/post", object: post %>
 <% end %>
