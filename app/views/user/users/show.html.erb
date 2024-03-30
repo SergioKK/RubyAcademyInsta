@@ -5,5 +5,5 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <%= render post %><br>
+  <%= render partial: "posts/post", object: post %><br>
 <% end %>

@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-  def user
+  def show
     @user = User.find(params[:user_id])
     @posts = Post.where(user: @user).order(created_at: :desc)
   end
