@@ -4,9 +4,9 @@
   <% else %>
     <h1><%= "#{@user.nickname} page" %></h1>
     <% if current_user_is_following(current_user.id, @user.id) %>
-      <%= link_to 'Unfollow', unfollow_user_path(name: @user.name), method: :post %>
+      <%= link_to 'Unfollow', unfollow_user_path(nickname: @user.nickname), id: 'unfollow-button', remote: true, method: :post %>
     <% else %>
-      <%= link_to 'Follow', follow_user_path(name: @user.name), method: :post %>
+      <%= link_to 'Follow', follow_user_path(nickname: @user.nickname), id: 'follow-button', remote: true, method: :post %>
     <% end %>
   <% end %>
 </div>

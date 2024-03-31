@@ -1,7 +1,11 @@
 class User::UsersController < ApplicationController
-  def show
+  def user_posts
     @user = User.find(params[:user_id])
     @posts = Post.where(user: @user).order(created_at: :desc)
+  end
+
+  def user_profile
+    @user = User.find(params[:user_id])
   end
 
   private
