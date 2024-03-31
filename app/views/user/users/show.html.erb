@@ -1,10 +1,15 @@
-<% unless current_user or @user %>
+<%# unless current_user or @user %>
   <% if current_user.id == @user.id %>
     <h1><%= "Your posts" %></h1><br>
   <% else %>
-    <h1><%= "#{@user.email} page" %></h1><br>
+    <h1><%= "#{@user.nickname} page" %></h1><br>
+    <% if current_user_is_following(current_user.id, @user.id) %>
+      <%= link_to 'Unfollow', unfollow_user_path(name: @user.name), method: :post %>
+    <% else %>
+      <%= link_to 'Follow', follow_user_path(name: @user.name), method: :post %>
+    <% end %>
   <% end %>
-<% end %>
+<%# end %>
 
 <% @posts.each do |post| %>
   <%= render partial: "posts/post", object: post %>
