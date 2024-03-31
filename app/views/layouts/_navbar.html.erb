@@ -1,14 +1,16 @@
-<p class="navbar-text float-right navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar-nav">
   <% if user_signed_in? %>
     <%= link_to "Posts", posts_path, class: "navbar-link btn btn-primary" %> |
     <%= link_to "My posts", user_posts_path(current_user), class: "navbar-link btn btn-primary" %> |
     <%= link_to "New post", new_post_path, class: "navbar-link btn btn-primary" %> |
     <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link btn btn-primary" %> |
     <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-link btn btn-primary" %> |
-    <strong>Logged in as <%= current_user.email %></strong>
+    <p align="right" >Logged in as <%= current_user.email %></p>
 
     <% else %>
       <%= link_to "Sign up", new_user_registration_path, class: "navbar-link btn btn-primary" %> |
       <%= link_to "Login", new_user_session_path, class: "navbar-link btn btn-primary" %>
     <% end %>
-</p>
+  </ul>
+</nav>

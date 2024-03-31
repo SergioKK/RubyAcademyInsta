@@ -1,4 +1,5 @@
-<div id="<%= dom_id post %>" class="card">
+<br>
+<div id="<%= dom_id post %>" class="post">
   <p>
     <%= link_to post.title, post_path(post) %>
   </p>
@@ -14,24 +15,24 @@
   <p>
     <%= post.content %>
   </p>
+</div>
 
-  <div class="card"
-    <%= "Comments: " %><br>
-    <% post.comments.each do |comment| %>
-      <%= "#{comment.text} (commented by: #{comment.user.email})" if comment.user %><br>
-      <% if policy(comment).delete? %>
-        <strong><%= button_to "Delete comment", comment, method: :delete %></strong>
-      <% end %>
+<div class="comment">
+  <%= "Comments: " %><br>
+  <% post.comments.each do |comment| %>
+    <%= "#{comment.text} (commented by: #{comment.user.email})" if comment.user %><br>
+    <% if policy(comment).delete? %>
+      <strong><%= button_to "Delete comment", comment, method: :delete %></strong>
     <% end %>
-  </div>
+  <% end %>
+</div>
 
-
+<div class="like">
   &#10084; <%= post.likes.count %>
   <% like = current_user.likes.find_by(post: post) if current_user %>
   <% if like.nil? %>
-    <%= button_to "Like", likes_path, params: { like: { post_id: post.id }}, method: :post %>
+    <%= button_to "Like", likes_path, params: { like: { post_id: post.id } }, method: :post %>
   <% else %>
     <%= button_to "Unlike", like_path(like), method: :delete %>
   <% end %>
-
 </div>

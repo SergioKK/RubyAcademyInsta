@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root "posts#index"
 
-  get 'user_posts/:user_id' => 'user/users#show', as: :user_posts
-
   resources :posts
   resources :comments
   resources :likes, only: [:create, :destroy]
@@ -10,4 +8,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'user/sessions'
   }
+
+  get 'user_posts/:user_id' => 'user/users#show', as: :user_posts
+
+  get 'follows/follow', as: :follow_user
+  get 'follows/unfollow', as: :unfollow_user
 end
