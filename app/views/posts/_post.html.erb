@@ -27,12 +27,4 @@
   <% end %>
 </div>
 
-<div class="like">
-  &#10084; <%= post.likes.count %>
-  <% like = current_user.likes.find_by(post: post) if current_user %>
-  <% if like.nil? %>
-    <%= button_to "Like", likes_path, params: { like: { post_id: post.id } }, method: :post %>
-  <% else %>
-    <%= button_to "Unlike", like_path(like), method: :delete %>
-  <% end %>
-</div>
+<%= render partial: "likes/like", locals: { post: post } %>

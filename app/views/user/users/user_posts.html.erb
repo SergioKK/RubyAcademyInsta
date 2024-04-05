@@ -1,16 +1,11 @@
-<div>
-  <% if current_user.id == @user.id %>
-    <h1><%= "Your posts" %></h1>
-  <% else %>
-    <h1><%= "#{@user.nickname} page" %></h1>
-    <% if current_user_is_following(current_user.id, @user.id) %>
-      <%= link_to 'Unfollow', unfollow_user_path(nickname: @user.nickname), id: 'unfollow-button', remote: true, method: :post %>
-    <% else %>
-      <%= link_to 'Follow', follow_user_path(nickname: @user.nickname), id: 'follow-button', remote: true, method: :post %>
-    <% end %>
-  <% end %>
-</div>
+<h1><%= "#{@user.nickname} page" %></h1>
 
-<% @posts.each do |post| %>
-  <%= render partial: "posts/post", object: post %>
+<% unless current_user_check(@user) %>
+  <% if current_user_is_following(current_user.id, @user.id) %>
+    <%= link_to 'Unfollow', unfollow_user_path(nickname: @user.nickname), id: 'unfollow-button', remote: true, method: :post %>
+  <% else %>
+    <%= link_to 'Follow', follow_user_path(nickname: @user.nickname), id: 'follow-button', remote: true, method: :post %>
+  <% end %>
 <% end %>
+
+<%= render partial: "user/users/user_posts", locals: { user: @user, posts: @posts } %>
