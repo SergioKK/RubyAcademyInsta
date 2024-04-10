@@ -62,6 +62,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "capybara"
+  gem 'ffaker'
 end
 
 group :development do
@@ -79,4 +80,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "selenium-webdriver"
   gem 'database_cleaner-active_record'
+  gem 'shoulda-matchers', '~> 6.0', require: false
 end
