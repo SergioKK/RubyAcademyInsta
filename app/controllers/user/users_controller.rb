@@ -6,6 +6,7 @@ class User::UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:user_id])
+    authorize @user, :edit?
     @posts = Post.where(user: @user).order(created_at: :desc)
     @followers = @user.followers
     @followings = @user.following
