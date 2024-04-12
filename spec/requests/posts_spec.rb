@@ -86,12 +86,12 @@ RSpec.describe "/posts", type: :request do
     context "with invalid parameters" do
       it "does not create a new Post" do
         expect {
-          post posts_url, params: { post: FactoryBot.attributes_for(:post, title: nil) }
+          post posts_path, params: { post: FactoryBot.attributes_for(:post, title: nil) }
         }.to change(Post, :count).by(0)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post posts_url, params: { post: FactoryBot.attributes_for(:post, image: nil) }
+        post posts_path, params: { post: FactoryBot.attributes_for(:post, image: nil) }
         expect(response).to have_http_status(:unprocessable_entity)
       end
 

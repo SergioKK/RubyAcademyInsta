@@ -9,6 +9,9 @@ module TestData
   end
 
   def uploaded_image
+    # due to set mime_type manual, but not from the file we turn off Shrine WARNING
+    Shrine.logger.level = Logger::FATAL
+
     file = File.open("spec/files/image.jpeg", binmode: true)
 
     # for performance we skip metadata extraction and assign test metadata
