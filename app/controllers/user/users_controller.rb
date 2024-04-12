@@ -12,6 +12,7 @@ class User::UsersController < ApplicationController
 
   def feed
     @posts = Post.followers current_user.following
+    @followings = current_user.following
   end
 
   private

@@ -1,0 +1,16 @@
+<div class="comment">
+  <%= "Comments: " %>
+  <% comments.each do |comment| %>
+    <% if comment.user %>
+      <strong>
+        <h4>
+          <%= "#{comment.text}" %>
+        </h4>
+        <%= link_to "(commented by: #{comment.user.email})", user_posts_path(comment.user) %>
+      </strong>
+    <% end %>
+    <% if policy(comment).delete? %>
+      <%= button_to "Delete comment", comment, method: :delete %>
+    <% end %>
+  <% end %>
+</div>

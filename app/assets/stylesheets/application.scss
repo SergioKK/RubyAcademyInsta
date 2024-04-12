@@ -16,8 +16,8 @@
  *= require_self
  */
 .post {
-  background: #f1eecc;
-  text-align: left;
+  background: rgba(243, 185, 8, 0.18);
+  text-align: center;
 }
 .comment {
   background: #ddecef;
@@ -25,6 +25,7 @@
 }
 .like {
   background: #efdde6;
+  text-align: right;
 }
 .navbar {
   background: #e3d3cb;

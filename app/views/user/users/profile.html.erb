@@ -1,15 +1,17 @@
-<h1><%= "It is your page #{current_user.name}" %></h1>
+<h1 align="right"><%= "It is your page, #{current_user.name}!" %></h1>
 
-<%= link_to "Edit profile", edit_user_registration_path(current_user) %><br>
+<p align="right"><%= link_to "Edit profile", edit_user_registration_path(current_user) %></p>
 
-<h3><%= "Scribes: " %></h3>
+<h3>Scribes: </h3>
 <% @followers.each do |f| %>
   <%= link_to f.nickname, user_posts_path(f.id) %><br>
 <% end %>
 
-<h3><%= "Subscriptions: " %></h3>
+<h3>Subscriptions: </h3>
 <% @followings.each do |f| %>
   <%= link_to f.nickname, user_posts_path(f.id) %><br>
 <% end %>
+
+<h3 align="center">Your posts </h3>
 
 <%= render "user/users/user_posts" %>
