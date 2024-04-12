@@ -25,18 +25,12 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "GET /profile/:user_id" do
+  describe "GET /profile" do
     it "shows users posts in his profile page" do
       get user_profile_path(user)
       posts.each do |p|
         expect(response.body).to include(p.content)
       end
-    end
-
-    it "do not show another user profile" do
-      get user_profile_path(test_user)
-      expect(response).to redirect_to("/")
-      expect(flash[:alert]).to match("You are not authorized to perform this action.")
     end
   end
 

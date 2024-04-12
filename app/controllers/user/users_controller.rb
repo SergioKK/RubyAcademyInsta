@@ -5,11 +5,9 @@ class User::UsersController < ApplicationController
   end
 
   def profile
-    @user = User.find(params[:user_id])
-    authorize @user, :edit?
-    @posts = Post.where(user: @user).order(created_at: :desc)
-    @followers = @user.followers
-    @followings = @user.following
+    @posts = Post.where(user: current_user).order(created_at: :desc)
+    @followers = current_user.followers
+    @followings = current_user.following
   end
 
   def feed
@@ -19,6 +17,6 @@ class User::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :surname, :nickname, :user_id)
+    params.require(:user).permit(:user_id)
   end
 end

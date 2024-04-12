@@ -46,7 +46,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-
+    authorize @post
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
