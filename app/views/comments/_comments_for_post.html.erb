@@ -3,9 +3,9 @@
   <% comments.each do |comment| %>
     <% if comment.user %>
       <strong>
-        <h4>
+        <h3>
           <%= "#{comment.text}" %>
-        </h4>
+        </h3>
         <%= link_to "(commented by: #{comment.user.email})", user_posts_path(comment.user) %>
       </strong>
     <% end %>
