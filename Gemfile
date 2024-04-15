@@ -55,6 +55,9 @@ gem "pundit", "~> 2.3"
 # photos uploader
 gem "shrine", "~> 3.0"
 gem "image_processing", "~> 1.8"
+gem 'mime-types', '~> 3.1'
+
+# for working with .env files
 gem 'dotenv', groups: [:development, :test]
 
 group :development, :test do
