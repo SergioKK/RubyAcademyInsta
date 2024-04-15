@@ -77,5 +77,5 @@ Rails.application.configure do
   # default url options
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
-  config.host<<"insta-clone-production.up.railway.app"
+  config.hosts << ENV['DEVELOPMENT_HOSTS']
 end
