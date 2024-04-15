@@ -7,6 +7,8 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 require_relative './initializers/shrine'
+require 'dotenv'
+Dotenv.load
 
 module Insta
   class Application < Rails::Application
