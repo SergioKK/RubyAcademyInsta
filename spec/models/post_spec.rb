@@ -1,5 +1,5 @@
 require 'rails_helper'
-require "#{Rails.root}/spec/helpers/image_helper_spec.rb"
+require "#{Rails.root}/spec/support/image.rb"
 
 RSpec.describe Post, type: :model do
   subject { FactoryBot.create(:post) }
@@ -12,7 +12,7 @@ RSpec.describe Post, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of(:title) }
-    it { should validate_presence_of(:image_data) }
+    it { should validate_presence_of(:image) }
   end
 
   describe 'image' do

@@ -11,7 +11,7 @@
 !/.env*.erb
 
 # Ignore all default key files.
-/config/master.key
+/master.key
 /config/credentials/*.key
 
 # Ignore all logfiles and tempfiles.
@@ -21,8 +21,8 @@
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-#/tmp/pids/*
-#!/tmp/pids/*
+/tmp/pids/*
+!/tmp/pids/*
 !/tmp/pids/.keep
 
 # Ignore storage (uploaded files in development and any SQLite databases).

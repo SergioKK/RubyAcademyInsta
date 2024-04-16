@@ -1,4 +1,4 @@
-require "#{Rails.root}/spec/helpers/image_helper_spec.rb"
+require "#{Rails.root}/spec/support/image.rb"
 
 FactoryBot.define do
   factory :post do
