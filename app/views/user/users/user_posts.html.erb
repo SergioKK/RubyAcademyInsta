@@ -1,4 +1,10 @@
-<h1><%= "#{@user.nickname} page" %></h1>
+<strong>
+  <%= "It is #{@user.nickname} page!" %>
+  <% if @user.image.presence %>
+    <%= render partial: "user/users/images", locals: { user: @user } %>
+  <% end %>
+</strong>
+<br>
 
 <% unless current_user_check(@user) %>
   <% if current_user_is_following(current_user.id, @user.id) %>

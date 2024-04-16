@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include ImageUploader::Attachment(:image)
+
+  before_create :set_default_avatar
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -24,5 +27,13 @@ class User < ApplicationRecord
 
   def unfollow(user_id)
     following_relationships.find_by(following_id: user_id).destroy
+  end
+
+  private
+
+  def set_default_avatar
+    unless self.image
+      self.image = File.open("storage/default_avatar.jpeg", "rb")
+    end
   end
 end

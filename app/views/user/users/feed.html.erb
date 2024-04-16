@@ -1,6 +1,10 @@
 <h1>Subscriptions</h1>
-<% @followings.each do |f| %>
-  <%= link_to f.nickname, user_posts_path(f.id) %><br>
-<% end %>
-
+<strong>
+  <% @followings.each do |f| %>
+    <% if f.image.presence %>
+      <%= render partial: "user/users/images", locals: { user: f } %>
+    <% end %>
+    <%= link_to f.nickname, user_posts_path(f.id) %><br>
+  <% end %>
+</strong>
 <%= render partial: "user/users/user_posts", locals: { posts: @posts } %>

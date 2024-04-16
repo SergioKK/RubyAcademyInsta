@@ -1,14 +1,24 @@
+<% if current_user.image.presence %>
+  <p align="right">
+    <%= render partial: "user/users/images", locals: { user: current_user } %>
+  </p>
+<% end %>
 <h1 align="right"><%= "It is your page, #{current_user.name}!" %></h1>
-
 <p align="right"><%= link_to "Edit profile", edit_user_registration_path(current_user) %></p>
 
 <h3>Scribes: </h3>
 <% @followers.each do |f| %>
+  <% if f.image.presence %>
+    <%= render partial: "user/users/images", locals: { user: f } %>
+  <% end %>
   <%= link_to f.nickname, user_posts_path(f.id) %><br>
 <% end %>
 
 <h3>Subscriptions: </h3>
 <% @followings.each do |f| %>
+  <% if f.image.presence %>
+    <%= render partial: "user/users/images", locals: { user: f } %>
+  <% end %>
   <%= link_to f.nickname, user_posts_path(f.id) %><br>
 <% end %>
 
