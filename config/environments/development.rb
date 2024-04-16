@@ -8,6 +8,8 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.enable_reloading = true
 
+  config.hosts << 'rubyacademyinsta-production.up.railway.app'
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -76,6 +78,4 @@ Rails.application.configure do
 
   # default url options
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-
-  config.hosts << ENV['DEVELOPMENT_HOSTS']
 end
