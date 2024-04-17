@@ -5,7 +5,13 @@
 
   <p>
     <% if post.image %>
-      <%= link_to image_tag(post.image_url, alt: "rss feed", height: 400, width: 800, border: 50, class: "img-responsive center-block"), post_path(post) %>
+      <%= link_to image_tag(post.image_url,
+                            alt: "rss feed",
+                            height: 400,
+                            width: 800,
+                            border: 50,
+                            class: "img-responsive center-block"),
+                            post_path(post) %>
     <% end %>
   </p>
 

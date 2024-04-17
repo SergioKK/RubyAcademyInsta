@@ -2,8 +2,7 @@ class User < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
   before_create :set_default_avatar
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

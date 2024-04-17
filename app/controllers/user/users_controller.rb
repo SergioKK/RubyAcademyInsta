@@ -11,6 +11,7 @@ class User::UsersController < ApplicationController
   end
 
   def feed
+    # @posts is only of users that current_user following
     @posts = Post.followers current_user.following
     @followings = current_user.following
   end
